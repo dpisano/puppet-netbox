@@ -13,7 +13,7 @@ class netbox::service {
     timeout     => 30,
   }
 
-  nginx::resource::vhost { $::netbox::vhost:
+  nginx::resource::server { $::netbox::vhost:
     proxy                => "http://unix:${::netbox::directory}/gunicorn.socket",
     server_name          => [ $::netbox::vhost, $::fqdn ],
     location_cfg_prepend => {
@@ -26,7 +26,7 @@ class netbox::service {
   nginx::resource::location { "${::netbox::vhost}-static":
     ensure         => 'present',
     location_alias => "${::netbox::directory}/netbox/static",
-    vhost          => $::netbox::vhost,
+    server          => $::netbox::vhost,
     location       => '/static',
   }
 
