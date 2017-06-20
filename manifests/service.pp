@@ -26,7 +26,7 @@ class netbox::service {
   nginx::resource::location { "${::netbox::vhost}-static":
     ensure         => 'present',
     location_alias => "${::netbox::directory}/netbox/static",
-    server          => $::netbox::vhost,
+    server         => $::netbox::vhost,
     location       => '/static',
   }
 

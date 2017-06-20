@@ -17,11 +17,11 @@ class netbox (
   if $manage_database {
     contain '::netbox::database'
 
-    Class['::netbox::database'] ->
+    Class['::netbox::database']->
     Class['::netbox::config']
   }
 
-  Class['::netbox::install'] ->
-  Class['::netbox::config'] ~>
+  Class['::netbox::install']->
+  Class['::netbox::config']~>
   Class['::netbox::service']
 }

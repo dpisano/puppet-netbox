@@ -18,7 +18,7 @@ class netbox::install {
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
-  } ->
+  }->
 
   archive { "netbox-${::netbox::version}.tar.gz":
     source          => "https://github.com/digitalocean/netbox/archive/v${::netbox::version}.tar.gz",
